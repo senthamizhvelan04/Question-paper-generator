@@ -1,0 +1,140 @@
+/* Print stylesheet for Question Paper Maker */
+/* Hides all web UI chrome, renders clean A4 academic paper */
+
+@media print {
+  /* Ensure clean white background and black text on html and body */
+  html, body {
+    background: white !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-family: 'Times New Roman', Times, serif !important;
+    font-size: 12pt !important;
+    color: #000 !important;
+  }
+
+  /* Hide editing steps and force display of the preview step during print */
+  .edit-step {
+    display: none !important;
+  }
+
+  .preview-step {
+    display: block !important;
+  }
+
+  /* Hide web-only UI elements */
+  .topbar,
+  .step-container,
+  .navigation-footer,
+  .tag-row,
+  .theme-toggle-btn,
+  .modal-overlay,
+  .action-bar,
+  .no-print,
+  .card,
+  .qtype-grid,
+  .tracker-badge {
+    display: none !important;
+  }
+
+  /* Show only the preview sheet */
+  .app-container {
+    display: block !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Make the preview sheet fill the page */
+  .preview-sheet-outer {
+    background: white !important;
+    border: none !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+  }
+
+  .preview-sheet-inner,
+  .preview-sheet-page {
+    max-width: none !important;
+    width: 100% !important;
+    border: none !important;
+    padding: 20mm 15mm !important;
+    margin: 0 !important;
+    background: white !important;
+    min-height: 0 !important;
+  }
+
+  .preview-sheet-inner *,
+  .preview-sheet-page * {
+    color: #000 !important;
+    font-family: 'Times New Roman', Times, serif !important;
+  }
+
+  /* Each page div should trigger a print page break */
+  .preview-sheet-page {
+    page-break-after: always !important;
+    break-after: page !important;
+  }
+
+  /* Hide the visual page-break indicator dividers on print */
+  .preview-page-break-indicator {
+    display: none !important;
+  }
+
+  /* Page break controls: allow sections to split across pages naturally,
+     but prevent section titles and headers from being orphaned at the bottom,
+     and prevent questions from splitting inside themselves. */
+  .sheet-section {
+    page-break-inside: auto !important;
+    break-inside: auto !important;
+  }
+
+  .sheet-section-header {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .sheet-header {
+    page-break-after: avoid !important;
+    break-after: avoid !important;
+  }
+
+  .sheet-q-row {
+    page-break-inside: avoid !important;
+    break-inside: avoid !important;
+  }
+
+  /* Print margins and page setup */
+  @page {
+    size: A4;
+    margin: 12mm 10mm;
+  }
+
+  /* Ensure candidate box border prints clearly */
+  .sheet-student-box {
+    border: 1px solid #000 !important;
+  }
+
+  .student-box-line {
+    border-bottom: 1px solid #000 !important;
+  }
+
+  /* Match table border in print */
+  .sheet-match-table th {
+    border-bottom: 1px solid #000 !important;
+  }
+
+  /* Ensure answer lines are visible but not overly harsh */
+  .blank-lines {
+    border-bottom: 1px solid #a0a0a0 !important;
+  }
+
+  .blank-area {
+    border: 1px solid #888 !important;
+    background: white !important;
+  }
+
+  /* MCQ options spacing */
+  .sheet-mcq-options {
+    gap: 4px 16px !important;
+  }
+}
